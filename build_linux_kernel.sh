@@ -12,8 +12,9 @@
 # =====================================================
 
 
-export PATH="$PWD/brandy/gcc-linaro/bin":"$PATH"
-cross_comp="arm-linux-gnueabi"
+#export PATH="$PWD/brandy/gcc-linaro/bin":"$PATH"
+export PATH=$PATH:/usr/local/angstrom/armv7linaro/bin/
+cross_comp="arm-linux-gnueabihf"
 
 # ##############
 # Prepare rootfs

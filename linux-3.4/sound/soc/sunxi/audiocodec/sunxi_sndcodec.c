@@ -94,7 +94,7 @@ static struct snd_soc_card snd_soc_sunxi_sndpcm = {
 	.num_links 	= 1,
 };
 
-static int __devinit sunxi_sndpcm_dev_probe(struct platform_device *pdev)
+static int sunxi_sndpcm_dev_probe(struct platform_device *pdev)
 {
 	int ret = 0;
 	struct snd_soc_card *card = &snd_soc_sunxi_sndpcm;
@@ -108,7 +108,7 @@ static int __devinit sunxi_sndpcm_dev_probe(struct platform_device *pdev)
 	return ret;
 }
 
-static int __exit sunxi_sndpcm_dev_remove(struct platform_device *pdev)
+static int sunxi_sndpcm_dev_remove(struct platform_device *pdev)
 {
 	struct snd_soc_card *card = platform_get_drvdata(pdev);
 

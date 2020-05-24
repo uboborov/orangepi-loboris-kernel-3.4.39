@@ -720,7 +720,7 @@ static struct ahash_alg sunxi_ss_algs_hash[] = {
 };
 
 /* Requeset the resource: IRQ, mem */
-static int __devinit sunxi_ss_res_request(struct platform_device *pdev)
+static int sunxi_ss_res_request(struct platform_device *pdev)
 {
 	int irq = 0;
 	int ret = 0;
@@ -784,7 +784,7 @@ static int __devinit sunxi_ss_res_request(struct platform_device *pdev)
 }
 
 /* Release the resource: IRQ, mem */
-static int __devexit sunxi_ss_res_release(sunxi_ss_t *sss)
+static int sunxi_ss_res_release(sunxi_ss_t *sss)
 {
 #ifdef SS_IDMA_ENABLE
 	int i;
@@ -977,7 +977,7 @@ static void sunxi_ss_sysfs_remove(struct platform_device *_pdev)
 	device_remove_file(&_pdev->dev, &sunxi_ss_status_attr);
 }
 
-static int __devinit sunxi_ss_probe(struct platform_device *pdev)
+static int sunxi_ss_probe(struct platform_device *pdev)
 {
 	int ret = 0;
 	sunxi_ss_t *sss = NULL;
@@ -1038,7 +1038,7 @@ err0:
 	return ret;
 }
 
-static int __devexit sunxi_ss_remove(struct platform_device *pdev)
+static int sunxi_ss_remove(struct platform_device *pdev)
 {
 	sunxi_ss_t *sss = platform_get_drvdata(pdev);
 

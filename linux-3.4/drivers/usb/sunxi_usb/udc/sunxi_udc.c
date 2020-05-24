@@ -3113,7 +3113,7 @@ static int sunxi_udc_remove_device_only(struct platform_device *pdev)
 	return 0;
 }
 #endif
-static int __init sunxi_udc_probe(struct platform_device *pdev)
+static int sunxi_udc_probe(struct platform_device *pdev)
 {
 #ifdef  CONFIG_USB_SUNXI_USB0_OTG
 #if defined (CONFIG_ARCH_SUN8IW6) || defined (CONFIG_ARCH_SUN8IW7) || defined (CONFIG_ARCH_SUN8IW8)

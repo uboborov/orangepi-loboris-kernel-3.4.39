@@ -595,7 +595,7 @@ err2:
     return ret;
 }
 
-static void __exit tscdev_exit(void)
+static void tscdev_exit(void)
 {
     dev_t dev;
 
@@ -642,13 +642,13 @@ static int snd_sw_tsc_resume(struct platform_device *pdev)
 
 #endif
 
-static int __devexit sunxi_tsc_remove(struct platform_device *pdev)
+static int sunxi_tsc_remove(struct platform_device *pdev)
 {
 	tscdev_exit();
 	return 0;
 }
 
-static int __devinit sunxi_tsc_probe(struct platform_device *pdev)
+static int sunxi_tsc_probe(struct platform_device *pdev)
 {
 		tscdev_init();
 		return 0;

@@ -65,7 +65,7 @@ static DEFINE_SPINLOCK(boot_lock);
 /* boot entry for each cpu */
 extern void *cpus_boot_entry[NR_CPUS];
 extern void secondary_startup(void);
-void sunxi_set_cpus_boot_entry(int cpu, void *entry)
+void __cpuinit sunxi_set_cpus_boot_entry(int cpu, void *entry)
 {
 	if(cpu < NR_CPUS) {
 		cpus_boot_entry[cpu] = (void *)(virt_to_phys(entry));
@@ -78,7 +78,7 @@ void sunxi_set_cpus_boot_entry(int cpu, void *entry)
 /*
  * Setup the set of possible CPUs (via set_cpu_possible)
  */
-void sunxi_smp_init_cpus(void)
+void __init sunxi_smp_init_cpus(void)
 {
 	unsigned int i, ncores;
 
@@ -124,7 +124,7 @@ void sunxi_smp_init_cpus(void)
 #endif
 }
 
-static void sunxi_smp_prepare_cpus(unsigned int max_cpus)
+static __cpuinit void sunxi_smp_prepare_cpus(unsigned int max_cpus)
 {
 	pr_info("[%s] enter\n", __func__);
 	sunxi_set_secondary_entry((void *)(virt_to_phys(sunxi_secondary_startup)));
@@ -133,7 +133,7 @@ static void sunxi_smp_prepare_cpus(unsigned int max_cpus)
 /*
  * Perform platform specific initialisation of the specified CPU.
  */
-void sunxi_smp_secondary_init(unsigned int cpu)
+void __cpuinit sunxi_smp_secondary_init(unsigned int cpu)
 {
 	/*
 	 * if any interrupts are already enabled for the primary
@@ -153,7 +153,7 @@ void sunxi_smp_secondary_init(unsigned int cpu)
  * Boot a secondary CPU, and assign it the specified idle task.
  * This also gives us the initial stack to use for this CPU.
  */
-int  sunxi_smp_boot_secondary(unsigned int cpu, struct task_struct *idle)
+int __cpuinit sunxi_smp_boot_secondary(unsigned int cpu, struct task_struct *idle)
 {
 	pr_debug("[%s] enter\n", __func__);
 	spin_lock(&boot_lock);

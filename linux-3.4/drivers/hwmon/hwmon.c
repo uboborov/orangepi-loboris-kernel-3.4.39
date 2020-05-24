@@ -104,7 +104,7 @@ void hwmon_device_unregister(struct device *dev)
 }
 EXPORT_SYMBOL_GPL(hwmon_device_unregister);
 
-static void __init hwmon_pci_quirks(void)
+static void hwmon_pci_quirks(void)
 {
 #if defined CONFIG_X86 && defined CONFIG_PCI
 	struct pci_dev *sb;

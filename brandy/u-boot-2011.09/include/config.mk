@@ -1,6 +1,6 @@
-TARGET = sun8iw7p1
+TARGET = sun6i
 ARCH   = arm
 CPU    = armv7
-BOARD  = sun8iw7
+BOARD  = sun8iw1
 VENDOR = sunxi
-SOC    = sun8iw7
+SOC    = sun8iw1

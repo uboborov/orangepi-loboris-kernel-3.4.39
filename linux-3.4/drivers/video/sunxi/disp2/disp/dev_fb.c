@@ -29,7 +29,8 @@ typedef struct
 	u32                     pseudo_palette [FB_MAX][16];
 	wait_queue_head_t       wait[3];
 	unsigned long           wait_count[3];
-	struct task_struct      *vsync_task[3];
+//jfm: unused from loboris patch
+//	struct task_struct      *vsync_task[3];
 	ktime_t                 vsync_timestamp[3];
 
 	int                     blank[3];
@@ -730,6 +731,7 @@ static void send_vsync_work_2(struct work_struct *work)
 }
 #endif
 
+#if 0 // jfm: unused after applying loboris patch
 static int vsync_proc(u32 disp)
 {
 	char buf[64];
@@ -758,6 +760,7 @@ static int vsync_thread(void *parg)
 
 	return 0;
 }
+#endif
 
 void DRV_disp_int_process(u32 sel)
 {
@@ -1289,6 +1292,7 @@ s32 fb_init(struct platform_device *pdev)
 
 	__inf("[DISP] %s\n", __func__);
 
+#if 0 // from loboris
 	for(i=0; i<num_screens; i++) {
 		char task_name[25];
 
@@ -1303,6 +1307,7 @@ s32 fb_init(struct platform_device *pdev)
 			sched_setscheduler_nocheck(g_fbi.vsync_task[i], SCHED_FIFO, &param);
 		}*/
 	}
+#endif
 	init_waitqueue_head(&g_fbi.wait[0]);
 	init_waitqueue_head(&g_fbi.wait[1]);
 	init_waitqueue_head(&g_fbi.wait[2]);

@@ -359,7 +359,7 @@ static struct snd_soc_dai_driver sunxi_audiohub_dai[] = {
 	}
 };
 
-static int __init sunxi_audiohub_dev_probe(struct platform_device *pdev)
+static int sunxi_audiohub_dev_probe(struct platform_device *pdev)
 {
 	int ret = 0;
 

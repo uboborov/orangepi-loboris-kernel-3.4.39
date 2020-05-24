@@ -797,7 +797,7 @@ static int sunxi_pburn_state_loop(void  *buffer)
 {
 	static struct umass_bbb_cbw_t  *cbw;
 	static struct umass_bbb_csw_t  csw;
-	static uint pburn_flash_start = 0;
+	static uint pburn_flash_start = 0, *p;
 	//static uint pburn_flash_sectors = 0;
 	int    ret;
 	sunxi_ubuf_t *sunxi_ubuf = (sunxi_ubuf_t *)buffer;
@@ -1076,7 +1076,8 @@ static int sunxi_pburn_state_loop(void  *buffer)
 						case 1:				//小机端接收数据
 						{
 							//pburn_flash_sectors  = *(int *)(cbw->CBWCDB + 8);
-							pburn_flash_start    = *(int *)(cbw->CBWCDB + 4);
+							p = (unsigned int *)(cbw->CBWCDB + 4);
+							pburn_flash_start    = *p;
 
 							trans_data.recv_size = cbw->dCBWDataTransferLength;
 							trans_data.act_recv_buffer = (uint)trans_data.base_recv_buffer;
@@ -1092,9 +1093,11 @@ static int sunxi_pburn_state_loop(void  *buffer)
 						case 3:             //小机端发送数据
 						{
 							uint start, sectors;
-
-							start   = *(int *)(cbw->CBWCDB + 4);		//读数据的偏移量
-							sectors = *(int *)(cbw->CBWCDB + 8);		//扇区数;
+							p = (unsigned int *)(cbw->CBWCDB + 4);
+  
+							start   = *p;		//读数据的偏移量
+							p = (unsigned int *)(cbw->CBWCDB + 8);
+							sectors = *p;		//扇区数;
 
 							printf("start=%d, sectors=%d\n", start, sectors);
 

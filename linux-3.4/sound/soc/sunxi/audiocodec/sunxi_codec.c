@@ -491,7 +491,7 @@ static struct snd_soc_dai_driver sunxi_pcm_dai = {
 	#endif
 };
 
-static int __init sunxi_pcm_dev_probe(struct platform_device *pdev)
+static int sunxi_pcm_dev_probe(struct platform_device *pdev)
 {
 	int err = -1;
 
@@ -509,7 +509,7 @@ static int __init sunxi_pcm_dev_probe(struct platform_device *pdev)
 	return 0;
 }
 
-static int __exit sunxi_pcm_dev_remove(struct platform_device *pdev)
+static int sunxi_pcm_dev_remove(struct platform_device *pdev)
 {
 	snd_soc_unregister_dai(&pdev->dev);
 	platform_set_drvdata(pdev, NULL);

@@ -21,6 +21,7 @@
  */
 
 #include "arisc_i.h"
+#include <linux/init.h>
 #include <mach/sunxi-chip.h>
 #include <asm/firmware.h>
 #include <linux/dma-mapping.h>

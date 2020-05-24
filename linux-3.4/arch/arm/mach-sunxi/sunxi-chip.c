@@ -251,7 +251,7 @@ void __init sunxi_soc_ver_init(void)
 	pr_debug("Init chip version:%x\n", sunxi_soc_ver);
 }
 
-void __init sunxi_chip_id_init(void)
+void sunxi_chip_id_init(void)
 {
 	/* PMU chip id init */
 #if (defined CONFIG_SUNXI_ARISC) && (defined CONFIG_AW_AXP)

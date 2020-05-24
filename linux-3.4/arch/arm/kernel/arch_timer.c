@@ -139,7 +139,7 @@ extern void smp_timer_broadcast(const struct cpumask *mask);
 #define smp_timer_broadcast	NULL
 #endif
 
-static int __cpuinit arch_timer_setup(struct clock_event_device *clk)
+static int arch_timer_setup(struct clock_event_device *clk)
 {
 	/* Be safe... */
 	arch_timer_disable();
@@ -255,7 +255,7 @@ static struct clocksource clocksource_counter = {
 	.flags	= CLOCK_SOURCE_IS_CONTINUOUS,
 };
 
-static void __cpuinit arch_timer_stop(struct clock_event_device *clk)
+static void arch_timer_stop(struct clock_event_device *clk)
 {
 	pr_debug("arch_timer_teardown disable IRQ%d cpu #%d\n",
 		 clk->irq, smp_processor_id());
