@@ -172,7 +172,7 @@ int bsp_cci_tx_start_wait_done(unsigned int sel, struct cci_msg *msg)
 #endif
 	if(1 == status_err_flag[sel])
 	{
-		printk("[VFE CCI_%d ERR] Status error at addr_8bit = %x, wr_flag = %d\n", sel, msg->bus_fmt.saddr_7bit<<1,msg->bus_fmt.wr_flag);
+		//printk("[VFE CCI_%d ERR] Status error at addr_8bit = %x, wr_flag = %d\n", sel, msg->bus_fmt.saddr_7bit<<1,msg->bus_fmt.wr_flag);
 		ret = -1;
 	}
 	if(msg->bus_fmt.wr_flag == 1)
